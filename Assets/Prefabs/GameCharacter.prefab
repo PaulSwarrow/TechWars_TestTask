@@ -46,7 +46,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 624616822757355864}
-  MoveSpeed: 3.5
 --- !u!195 &9014888302513083378
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -57,7 +56,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 2.5
+  m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -134,7 +133,7 @@ PrefabInstance:
     - target: {fileID: 9500000, guid: 0e7947590c70e0345ac931a2239181e6, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: b446f20c959e1b845a0dd07cbf304be3, type: 2}
+      objectReference: {fileID: 9100000, guid: 23b31abb94d118d459de266a5f9c6b73, type: 2}
     - target: {fileID: 9500000, guid: 0e7947590c70e0345ac931a2239181e6, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0

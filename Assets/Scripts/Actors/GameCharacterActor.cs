@@ -1,5 +1,4 @@
-﻿using System;
-using DefaultNamespace.Data;
+﻿using DefaultNamespace.Data;
 using DefaultNamespace.Interfaces;
 using UnityEngine;
 using UnityEngine.AI;
@@ -8,13 +7,11 @@ namespace DefaultNamespace
 {
     public class GameCharacterActor : MonoBehaviour, IPoolable
     {
-        public event Action ActivatedEvent;
-        public event Action DeactivatedEvent;
-        
-        private static readonly int MoveKey = Animator.StringToHash("Move");
+        private static readonly int ForwardKey = Animator.StringToHash("forward");
+        private static readonly int StrafeKey = Animator.StringToHash("strafe");
 
+        [SerializeField] private float directionAlignVelocity = 6;
         [SerializeField] private Animator animator;
-        [SerializeField] private float MoveSpeed = 3.5f;
         private NavMeshAgent agent;
 
         public GameCharacter character { get; private set; }
@@ -30,23 +27,25 @@ namespace DefaultNamespace
         public void Activate(GameCharacter character)
         {
             this.character = character;
-            ActivatedEvent?.Invoke();
         }
-        
+
         public void Reset()
         {
             character = null;
-            DeactivatedEvent?.Invoke();
         }
 
         private void Update()
         {
-            var movement = character.Move * MoveSpeed;
-            animator.SetFloat(MoveKey, movement.magnitude);
+            var movement = character.Move * agent.speed;
+            var localMovement = transform.InverseTransformDirection(movement);
+            animator.SetFloat(ForwardKey, localMovement.z);
+            animator.SetFloat(StrafeKey, localMovement.x);
+
             agent.Move(movement * Time.deltaTime);
             if (character.Direction.magnitude > 0)
             {
-                transform.rotation = Quaternion.LookRotation(character.Direction, Vector3.up);
+                var angle = Vector3.SignedAngle(transform.forward, character.Direction, Vector3.up);
+                transform.rotation *= Quaternion.Euler(0, directionAlignVelocity * angle * Time.deltaTime, 0);
             }
         }
     }
