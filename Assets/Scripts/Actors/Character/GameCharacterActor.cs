@@ -1,6 +1,7 @@
 ﻿using System;
 using DefaultNamespace.Data;
 using DefaultNamespace.Interfaces;
+using DefaultNamespace.Tools;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,6 +14,7 @@ namespace DefaultNamespace
 
         [SerializeField] private float directionAlignVelocity = 6;
         [SerializeField] private Animator animator;
+        [SerializeField] private CharacterIk ik;
         private NavMeshAgent agent;
 
         public GameCharacter character { get; private set; }
@@ -42,7 +44,9 @@ namespace DefaultNamespace
             //animate
             animator.SetFloat(ForwardKey, localMovement.z);
             animator.SetFloat(StrafeKey, localMovement.x);
-            //move
+            ik.Aiming = character.Aiming;
+            ik.AimPoint = character.AimPoint;
+            
             agent.Move(movement * Time.deltaTime);
             if (character.Direction.magnitude > 0)
             {

@@ -10,6 +10,9 @@
           <e p="Actors" t="Include">
             <e p="Character" t="Include">
               <e p="GameCharacterActor.cs" t="Include" />
+              <e p="Tools" t="Include">
+                <e p="CharacterIk.cs" t="Include" />
+              </e>
             </e>
           </e>
           <e p="Data" t="Include">
