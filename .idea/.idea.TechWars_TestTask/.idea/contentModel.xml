@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Pall\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Pall\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_TechWars_TestTask.1081192187.00" t="ExcludeRecursive" />
+    <e p="D:\Pall\coding\TechWars_TestTask" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Scripts" t="Include">
+          <e p="Actors" t="Include">
+            <e p="GameCharacterActor.cs" t="Include" />
+          </e>
+          <e p="Data" t="Include">
+            <e p="GrenadeType.cs" t="Include" />
+          </e>
+          <e p="GameManager.cs" t="Include" />
+          <e p="IGameSystem.cs" t="Include" />
+          <e p="Interfaces" t="Include">
+            <e p="IPoolable.cs" t="Include" />
+          </e>
+          <e p="Model" t="Include">
+            <e p="GameCharacter.cs" t="Include" />
+          </e>
+          <e p="Systems" t="Include">
+            <e p="GameCharacterSystem.cs" t="Include" />
+            <e p="ObjectSpawner.cs" t="Include" />
+            <e p="PlayerController.cs" t="Include" />
+          </e>
+          <e p="Tools" t="Include">
+            <e p="FollowCamera.cs" t="Include" />
+            <e p="ListExtension.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="TechWars_TestTask.sln" t="IncludeFlat" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
