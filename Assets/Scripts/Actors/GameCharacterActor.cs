@@ -37,7 +37,7 @@ namespace DefaultNamespace
         private void Update()
         {
             var movement = character.Move * agent.speed;
-            var localMovement = transform.InverseTransformDirection(movement);
+            var localMovement = transform.InverseTransformDirection(character.Move);
             animator.SetFloat(ForwardKey, localMovement.z);
             animator.SetFloat(StrafeKey, localMovement.x);
 
