@@ -1,4 +1,5 @@
-﻿using DefaultNamespace.Data;
+﻿using System;
+using DefaultNamespace.Data;
 using DefaultNamespace.Interfaces;
 using UnityEngine;
 using UnityEngine.AI;
@@ -38,9 +39,10 @@ namespace DefaultNamespace
         {
             var movement = character.Move * agent.speed;
             var localMovement = transform.InverseTransformDirection(character.Move);
+            //animate
             animator.SetFloat(ForwardKey, localMovement.z);
             animator.SetFloat(StrafeKey, localMovement.x);
-
+            //move
             agent.Move(movement * Time.deltaTime);
             if (character.Direction.magnitude > 0)
             {

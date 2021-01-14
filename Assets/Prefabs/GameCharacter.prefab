@@ -45,7 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be4048afc8494c749238480e7d48755b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  directionAlignVelocity: 6
   animator: {fileID: 624616822757355864}
+  ik: {fileID: 0}
 --- !u!195 &9014888302513083378
 NavMeshAgent:
   m_ObjectHideFlags: 0

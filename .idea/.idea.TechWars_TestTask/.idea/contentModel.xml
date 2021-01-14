@@ -8,7 +8,9 @@
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
           <e p="Actors" t="Include">
-            <e p="GameCharacterActor.cs" t="Include" />
+            <e p="Character" t="Include">
+              <e p="GameCharacterActor.cs" t="Include" />
+            </e>
           </e>
           <e p="Data" t="Include">
             <e p="GrenadeType.cs" t="Include" />

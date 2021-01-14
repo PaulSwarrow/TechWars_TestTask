@@ -16,7 +16,7 @@ namespace DefaultNamespace.Data
         }
 
         public Vector3 Position => actor.transform.position;
-
+        public bool Fire;
         public bool Aiming;
         public Vector3 AimPoint;
         public Vector3 Move;
