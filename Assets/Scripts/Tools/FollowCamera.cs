@@ -16,7 +16,7 @@ public class FollowCamera : MonoBehaviour
         target = GameManager.PlayerController.Target;
     }
 
-    void LateUpdate()
+    private void LateUpdate()
     {
         var cameraPosition = transform.position;
         var position = target.Position;

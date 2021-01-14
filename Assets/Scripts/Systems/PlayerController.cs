@@ -1,5 +1,7 @@
 ﻿using DefaultNamespace.Data;
+using Tools;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace DefaultNamespace.Systems
 {
@@ -7,10 +9,12 @@ namespace DefaultNamespace.Systems
     {
         private GameCharacter character;
         private Camera camera;
+        private int floorMask;
         public GameCharacter Target => character;
 
         public void Init()
         {
+            floorMask = LayerMask.GetMask("Floor");
             camera = Camera.main;
         }
 
@@ -27,14 +31,23 @@ namespace DefaultNamespace.Systems
 
         private void OnUpdate()
         {
-            var moveVector = new Vector3(
-                Input.GetAxis("Horizontal"),
-                0,
-                Input.GetAxis("Vertical"));
+            character.Aiming = Input.GetButton("Fire2");
+            var moveVector = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
             moveVector = Quaternion.Euler(0, camera.transform.rotation.eulerAngles.y, 0) * moveVector;
             character.Move = moveVector;
 
-            if (moveVector.magnitude > 0)
+            if (character.Aiming)
+            {
+                if (InputTools.MouseToFloorPoint(camera, 40, floorMask, out var point))
+                {
+                    character.AimPoint = point;
+                }
+
+                var direction = character.AimPoint - character.Position;
+                direction.y = 0;
+                character.Direction = direction;
+            }
+            else if (moveVector.magnitude > 0)
             {
                 character.Direction = moveVector;
             }
