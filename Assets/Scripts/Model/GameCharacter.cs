@@ -24,6 +24,7 @@ namespace DefaultNamespace.Data
         public Vector3 Direction;
         public float Health;
         public bool Dead;
+        public float MaxHealth;
 
 
         public void Destroy()

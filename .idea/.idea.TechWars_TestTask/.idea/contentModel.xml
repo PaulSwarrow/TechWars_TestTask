@@ -48,6 +48,10 @@
             <e p="InputTools.cs" t="Include" />
             <e p="ListExtension.cs" t="Include" />
           </e>
+          <e p="Ui" t="Include">
+            <e p="CharacterStatusUi.cs" t="Include" />
+            <e p="CharactersTrackerUi.cs" t="Include" />
+          </e>
         </e>
         <e p="VFX" t="Include">
           <e p="WarFX" t="Include">

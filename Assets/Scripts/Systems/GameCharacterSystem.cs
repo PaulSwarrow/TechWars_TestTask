@@ -9,9 +9,9 @@ namespace DefaultNamespace.Systems
     public class GameCharacterSystem : IGameSystem
     {
         public event Action<GameCharacter> DeathEvent;
-        
+
         private GameCharacterActor prefab;
-        private HashSet<GameCharacter> list = new HashSet<GameCharacter>();
+        private List<GameCharacter> list = new List<GameCharacter>();
 
         public void Init()
         {
@@ -30,7 +30,7 @@ namespace DefaultNamespace.Systems
         {
             var character = new GameCharacter(prefab);
             character.SetPosition(position, lookDirection);
-            character.Health = GameManager.Properties.characterHealth;
+            character.Health = character.MaxHealth = GameManager.Properties.characterHealth;
             character.DestroyEvent += OnCharacterDestroyed;
             list.Add(character);
             character.DeathEvent += OnCharacterDead;
@@ -40,13 +40,20 @@ namespace DefaultNamespace.Systems
         private void OnCharacterDead(GameCharacter character)
         {
             DeathEvent?.Invoke(character);
-
         }
 
         private void OnCharacterDestroyed(GameCharacter character)
         {
             character.DeathEvent -= OnCharacterDead;
             list.Remove(character);
+        }
+
+        public void Foreach(Action<GameCharacter> handler)
+        {
+            for (var i = list.Count - 1; i >= 0; i--)
+            {
+                handler(list[i]);
+            }
         }
     }
 }

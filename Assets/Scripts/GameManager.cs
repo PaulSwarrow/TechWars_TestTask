@@ -10,7 +10,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameProperties properties;
     private List<IGameSystem> systems = new List<IGameSystem>();
 
+    public static event Action StartEvent;
     public static event Action UpdateEvent;
+    public static event Action EndEvent;
     public static GameProperties Properties { get; private set; }
     public static PlayerController PlayerController { get; private set; }
     public static GameCharacterSystem GameCharacter { get; private set; }
@@ -39,11 +41,13 @@ public class GameManager : MonoBehaviour
 
         systems.ForEach(system => system.Init());
         systems.ForEach(system => system.Start());
+        StartEvent?.Invoke();
     }
 
 
     private void OnDestroy()
     {
+        EndEvent?.Invoke();
         systems.ForEach(system => system.Destroy());
     }
 
