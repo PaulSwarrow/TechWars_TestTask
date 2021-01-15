@@ -6,6 +6,7 @@ namespace DefaultNamespace.Actors
     public class ProjectileActor : MonoBehaviour, IPoolable
     {
         private Transform _transform;
+        public float timestamp;
 
         public void Reset()
         {

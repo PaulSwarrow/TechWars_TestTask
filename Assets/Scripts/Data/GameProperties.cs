@@ -9,5 +9,6 @@ namespace DefaultNamespace.Data
         public GameCharacterActor characterActorPrefab;
         public ProjectileActor projectilePrefab;
         public float projectileVelocity;
+        public float projectileLifetime = 1;
     }
 }

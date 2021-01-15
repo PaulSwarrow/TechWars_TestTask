@@ -22,6 +22,7 @@ namespace DefaultNamespace.Systems
         {
             var projectile = GameManager.ObjectSpawner.Spawn(GameManager.Properties.projectilePrefab, position,
                 Quaternion.LookRotation(direction, Vector3.up));
+            projectile.timestamp = Time.time;
             projectiles.Add(projectile);
         }
 
@@ -32,7 +33,7 @@ namespace DefaultNamespace.Systems
                 var projectile = projectiles[i];
 
                 var step = projectile.Direction * (GameManager.Properties.projectileVelocity * Time.deltaTime);
-                if (CheckHit(projectile, step))
+                if (CheckHit(projectile, step) || Time.time - projectile.timestamp > GameManager.Properties.projectileLifetime)
                 {
                     GameManager.ObjectSpawner.Destroy(projectile);
                     projectiles.RemoveAt(i);
