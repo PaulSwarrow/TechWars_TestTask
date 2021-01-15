@@ -54,7 +54,8 @@ namespace DefaultNamespace
                 return;
             }
 
-            gun.Fire = character.Fire;
+            var lookAtTarget = Vector3.Angle(transform.forward, character.AimPoint - transform.position) < 30;
+            gun.Fire = character.Fire && lookAtTarget;
             gun.AimPoint = character.AimPoint;
             var movement = character.Move * agent.speed;
             var localMovement = transform.InverseTransformDirection(character.Move);
