@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using DefaultNamespace.Data;
+using Model;
 using UnityEngine;
 
-namespace DefaultNamespace.Ui
+namespace Ui
 {
     public class CharactersTrackerUi : MonoBehaviour
     {

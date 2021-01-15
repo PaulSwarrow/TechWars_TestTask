@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace DefaultNamespace.Ui
+namespace Ui
 {
     public class AimUi : MonoBehaviour
     {

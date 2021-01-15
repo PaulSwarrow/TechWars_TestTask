@@ -1,12 +1,10 @@
 ﻿using Actors.Character.Tools;
-using DefaultNamespace.Data;
-using DefaultNamespace.Interfaces;
-using DefaultNamespace.Tools;
-using Tools;
+using Interfaces;
+using Model;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace DefaultNamespace
+namespace Actors.Character
 {
     public class GameCharacterActor : MonoBehaviour, IPoolable, IDamagable
     {

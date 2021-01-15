@@ -1,9 +1,6 @@
-﻿namespace DefaultNamespace
+﻿public interface IGameSystem
 {
-    public interface IGameSystem
-    {
-        void Init();
-        void Start();
-        void Destroy();
-    }
+    void Init();
+    void Start();
+    void Destroy();
 }

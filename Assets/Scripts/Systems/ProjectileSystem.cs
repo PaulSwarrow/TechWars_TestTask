@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using DefaultNamespace.Actors;
-using DefaultNamespace.Interfaces;
+using Actors;
+using Interfaces;
 using UnityEngine;
 
-namespace DefaultNamespace.Systems
+namespace Systems
 {
     public class ProjectileSystem : IGameSystem
     {

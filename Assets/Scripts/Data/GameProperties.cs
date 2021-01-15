@@ -1,7 +1,8 @@
 ﻿using System;
-using DefaultNamespace.Actors;
+using Actors;
+using Actors.Character;
 
-namespace DefaultNamespace.Data
+namespace Data
 {
     [Serializable]
     public class GameProperties

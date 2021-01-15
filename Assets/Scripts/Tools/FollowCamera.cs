@@ -1,24 +1,27 @@
-﻿using DefaultNamespace.Data;
+﻿using Model;
 using UnityEngine;
 
-public class FollowCamera : MonoBehaviour
+namespace Tools
 {
-    private GameCharacter target;
-
-    [SerializeField] private Vector3 offset;
-    [SerializeField] private float moveSpeed = 2;
-
-    private void Start()
+    public class FollowCamera : MonoBehaviour
     {
-        target = GameManager.PlayerController.Target;
-    }
+        private GameCharacter target;
 
-    private void LateUpdate()
-    {
-        var cameraPosition = transform.position;
-        var position = target.Position;
-        var targetPosition = position + offset;
+        [SerializeField] private Vector3 offset;
+        [SerializeField] private float moveSpeed = 2;
 
-        transform.position = Vector3.Slerp(cameraPosition, targetPosition, moveSpeed * Time.fixedDeltaTime);
+        private void Start()
+        {
+            target = GameManager.PlayerController.Target;
+        }
+
+        private void LateUpdate()
+        {
+            var cameraPosition = transform.position;
+            var position = target.Position;
+            var targetPosition = position + offset;
+
+            transform.position = Vector3.Slerp(cameraPosition, targetPosition, moveSpeed * Time.fixedDeltaTime);
+        }
     }
 }

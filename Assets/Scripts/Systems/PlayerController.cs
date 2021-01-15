@@ -1,8 +1,8 @@
-﻿using DefaultNamespace.Data;
+﻿using Model;
 using Tools;
 using UnityEngine;
 
-namespace DefaultNamespace.Systems
+namespace Systems
 {
     public class PlayerController : IGameSystem
     {

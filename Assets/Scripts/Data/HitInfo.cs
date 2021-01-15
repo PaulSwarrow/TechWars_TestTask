@@ -1,7 +1,7 @@
-﻿using Tools;
+﻿using Actors.Character.Tools;
 using UnityEngine;
 
-namespace DefaultNamespace.Data
+namespace Data
 {
     public class HitInfo
     {

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using DefaultNamespace.Data;
-using Tools;
+using Actors.Character.Tools;
+using Data;
 using UnityEngine;
 
-namespace DefaultNamespace.Systems
+namespace Systems
 {
     public class CollidersSystem : IGameSystem
     {

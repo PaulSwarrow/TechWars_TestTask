@@ -1,7 +1,7 @@
-﻿using DefaultNamespace.Data;
+﻿using Model;
 using UnityEngine;
 
-namespace DefaultNamespace.Tools
+namespace Actors.Character.Tools
 {
     public class CharacterIk : MonoBehaviour
     {

@@ -1,7 +1,7 @@
-﻿using DefaultNamespace.Interfaces;
+﻿using Interfaces;
 using UnityEngine;
 
-namespace DefaultNamespace.Actors
+namespace Actors
 {
     public class ProjectileActor : MonoBehaviour, IPoolable
     {

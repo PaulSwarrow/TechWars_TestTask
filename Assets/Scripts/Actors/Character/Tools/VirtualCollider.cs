@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Tools
+namespace Actors.Character.Tools
 {
     public class VirtualCollider : MonoBehaviour
     {

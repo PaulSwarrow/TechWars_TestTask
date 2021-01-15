@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using DefaultNamespace.Data;
+using Model;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace DefaultNamespace.Systems
+namespace Systems
 {
     public class NpcSystem : IGameSystem
     {

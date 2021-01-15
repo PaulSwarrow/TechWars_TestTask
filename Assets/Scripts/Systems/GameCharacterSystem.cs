@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using DefaultNamespace.Data;
+using Actors.Character;
+using Model;
 using UnityEngine;
 
-namespace DefaultNamespace.Systems
+namespace Systems
 {
     public class GameCharacterSystem : IGameSystem
     {

@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using DefaultNamespace;
-using DefaultNamespace.Data;
-using DefaultNamespace.Systems;
+using Systems;
+using Data;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour

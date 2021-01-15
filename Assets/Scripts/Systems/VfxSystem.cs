@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DefaultNamespace.Systems
+namespace Systems
 {
     public class VfxSystem : IGameSystem
     {

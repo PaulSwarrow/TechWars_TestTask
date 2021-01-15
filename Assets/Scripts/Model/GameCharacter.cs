@@ -1,7 +1,8 @@
 ﻿using System;
+using Actors.Character;
 using UnityEngine;
 
-namespace DefaultNamespace.Data
+namespace Model
 {
     public class GameCharacter
     {

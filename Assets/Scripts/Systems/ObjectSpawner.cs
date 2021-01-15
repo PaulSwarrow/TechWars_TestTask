@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using DefaultNamespace.Interfaces;
+using Interfaces;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace DefaultNamespace.Systems
+namespace Systems
 {
     public class ObjectSpawner : IGameSystem
     {
