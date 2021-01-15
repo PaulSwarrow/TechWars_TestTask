@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Tools
 {
@@ -27,8 +26,8 @@ namespace Tools
         public bool HitTest(Vector3 position, Vector3 vector, out Vector3 point)
         {
             if (bounds.IntersectRay(
-                new Ray(_transform.InverseTransformPoint(position), _transform.InverseTransformDirection(vector)),
-                out var distance) && distance < vector.magnitude)
+                    new Ray(_transform.InverseTransformPoint(position), _transform.InverseTransformDirection(vector)),
+                    out var distance) && distance < vector.magnitude)
             {
                 point = position + vector * distance;
 

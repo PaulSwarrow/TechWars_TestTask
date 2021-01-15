@@ -1,7 +1,6 @@
 ﻿using DefaultNamespace.Data;
 using Tools;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace DefaultNamespace.Systems
 {

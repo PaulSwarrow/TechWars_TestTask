@@ -7,7 +7,6 @@ namespace DefaultNamespace.Actors
     {
         public void Reset()
         {
-            
         }
     }
 }

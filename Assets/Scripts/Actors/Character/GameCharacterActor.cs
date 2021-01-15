@@ -21,7 +21,7 @@ namespace DefaultNamespace
         [SerializeField] private VirtualCollider collider;
         private NavMeshAgent agent;
 
-        public GameCharacter character { get; private set; }
+        public GameCharacter Character { get; private set; }
 
         public Transform transform { get; private set; }
 
@@ -33,38 +33,38 @@ namespace DefaultNamespace
 
         public void Activate(GameCharacter character)
         {
-            this.character = character;
+            this.Character = character;
             ik.Character = character;
         }
 
         public void Reset()
         {
-            character = null;
+            Character = null;
         }
 
         private void Update()
         {
-            animator.SetBool(DeadKey, character.Dead);
-            animator.SetLayerWeight(1, character.Dead ? 0 : 1);
-            collider.enabled = !character.Dead;
-            agent.enabled = !character.Dead;
-            if (character.Dead)
+            animator.SetBool(DeadKey, Character.Dead);
+            animator.SetLayerWeight(1, Character.Dead ? 0 : 1);
+            collider.enabled = !Character.Dead;
+            agent.enabled = !Character.Dead;
+            if (Character.Dead)
             {
                 gun.Fire = false;
                 return;
             }
 
-            var lookAtTarget = Vector3.Angle(transform.forward, character.AimPoint - transform.position) < 30;
-            gun.Fire = character.Fire && lookAtTarget;
-            gun.AimPoint = character.AimPoint;
-            var movement = character.Move * agent.speed;
-            var localMovement = transform.InverseTransformDirection(character.Move);
+            var lookAtTarget = Vector3.Angle(transform.forward, Character.AimPoint - transform.position) < 30;
+            gun.Fire = Character.Fire && lookAtTarget;
+            gun.AimPoint = Character.AimPoint;
+            var movement = Character.Move * agent.speed;
+            var localMovement = transform.InverseTransformDirection(Character.Move);
             //animate
             animator.SetFloat(ForwardKey, localMovement.z);
             animator.SetFloat(StrafeKey, localMovement.x);
 
             agent.Move(movement * Time.deltaTime);
-            var direction = character.Direction;
+            var direction = Character.Direction;
             direction.y = 0;
             if (direction.magnitude > 0)
             {
@@ -75,7 +75,7 @@ namespace DefaultNamespace
 
         public void TakeDamage()
         {
-            character.TakeDamage();
+            Character.TakeDamage();
         }
     }
 }

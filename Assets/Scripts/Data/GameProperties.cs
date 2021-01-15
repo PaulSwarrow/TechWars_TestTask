@@ -1,7 +1,5 @@
 ﻿using System;
 using DefaultNamespace.Actors;
-using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace DefaultNamespace.Data
 {

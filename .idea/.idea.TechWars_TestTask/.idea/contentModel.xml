@@ -21,7 +21,6 @@
           </e>
           <e p="Data" t="Include">
             <e p="GameProperties.cs" t="Include" />
-            <e p="GrenadeType.cs" t="Include" />
             <e p="HitInfo.cs" t="Include" />
           </e>
           <e p="GameManager.cs" t="Include" />

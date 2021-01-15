@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using DefaultNamespace.Data;
 using UnityEngine;
 
@@ -14,7 +13,7 @@ namespace DefaultNamespace.Ui
         private void Awake()
         {
             GameManager.StartEvent += OnGameStart;
-            if(GameManager.GameStarted) OnGameStart();
+            if (GameManager.GameStarted) OnGameStart();
         }
 
         private void OnDestroy()

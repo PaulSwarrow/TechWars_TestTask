@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using DefaultNamespace.Data;
+﻿using DefaultNamespace.Data;
 using UnityEngine;
 
 public class FollowCamera : MonoBehaviour
@@ -23,6 +20,5 @@ public class FollowCamera : MonoBehaviour
         var targetPosition = position + offset;
 
         transform.position = Vector3.Slerp(cameraPosition, targetPosition, moveSpeed * Time.fixedDeltaTime);
-        
     }
 }

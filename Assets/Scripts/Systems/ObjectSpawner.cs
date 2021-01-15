@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using DefaultNamespace.Interfaces;
-using Tools;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -50,6 +49,7 @@ namespace DefaultNamespace.Systems
                 queue = new Queue<IPoolable>();
                 pools[type] = queue;
             }
+
             queue.Enqueue(item);
         }
     }

@@ -1,5 +1,4 @@
-﻿using System;
-using DefaultNamespace.Data;
+﻿using DefaultNamespace.Data;
 using UnityEngine;
 
 namespace DefaultNamespace.Tools
@@ -7,10 +6,10 @@ namespace DefaultNamespace.Tools
     public class CharacterIk : MonoBehaviour
     {
         public GameCharacter Character;
-        
+
         [SerializeField] private float correctionY;
         [SerializeField] private float correctionX;
-        
+
         private Animator _animator;
         private Transform _transform;
 
@@ -33,7 +32,7 @@ namespace DefaultNamespace.Tools
             if (delta.magnitude < 1.5f) delta = delta.normalized * 1.5f;
             delta = _transform.InverseTransformDirection(delta);
             delta = Quaternion.Euler(0, correctionY, 0) * delta;
-            delta = Quaternion.Euler(correctionX,0, 0) * delta;
+            delta = Quaternion.Euler(correctionX, 0, 0) * delta;
             delta = _transform.TransformDirection(delta);
             _animator.SetLookAtPosition(_transform.position + delta);
             _animator.SetLookAtWeight(1, 1);
