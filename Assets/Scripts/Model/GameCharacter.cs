@@ -6,6 +6,7 @@ namespace DefaultNamespace.Data
 {
     public class GameCharacter
     {
+        public event Action<GameCharacter> DeathEvent;
         public event Action<GameCharacter> DestroyEvent;
         private GameCharacterActor actor;
 
@@ -40,9 +41,11 @@ namespace DefaultNamespace.Data
 
         public void TakeDamage()
         {
+            if (Dead) return;
             Health -= GameManager.Properties.damage;
             if (Health <= 0)
             {
+                DeathEvent?.Invoke(this);
                 Health = 0;
                 Dead = true;
             }

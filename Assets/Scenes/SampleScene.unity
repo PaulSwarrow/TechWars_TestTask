@@ -405,6 +405,11 @@ MonoBehaviour:
     projectilePrefab: {fileID: 114327156514205498, guid: 69cc7497a0c39594e82c44330da56186,
       type: 3}
     projectileVelocity: 100
+    projectileLifetime: 1
+    characterHealth: 100
+    damage: 10
+    NpcCount: 5
+    respawnTime: 5
 --- !u!4 &1779076117
 Transform:
   m_ObjectHideFlags: 0

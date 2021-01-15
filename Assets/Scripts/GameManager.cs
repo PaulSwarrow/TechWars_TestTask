@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
 
     public static CollidersSystem Colliders { get; private set; }
     public static NpcSystem NpcSystem { get; private set; }
+    public static RespawnSystem RespawnSystem { get; private set; }
 
     // Start is called before the first frame update
     void Awake()
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour
         Projectiles = InitSystem<ProjectileSystem>();
         Colliders = InitSystem<CollidersSystem>();
         NpcSystem = InitSystem<NpcSystem>();
+        RespawnSystem = InitSystem<RespawnSystem>();
 
 
         systems.ForEach(system => system.Init());

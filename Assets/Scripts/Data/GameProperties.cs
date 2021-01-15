@@ -13,5 +13,6 @@ namespace DefaultNamespace.Data
         public float characterHealth = 100;
         public float damage = 10;
         public int NpcCount = 5;
+        public float respawnTime = 5;
     }
 }
