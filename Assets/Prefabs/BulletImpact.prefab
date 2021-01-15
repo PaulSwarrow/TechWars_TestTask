@@ -1,5 +1,17 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &2051111638743668531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7183455942495797926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb896aa6f58c467d81a9e3484c9ce0b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7183455942495699972
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9,7 +21,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
       propertyPath: m_Name
-      value: WFX_BImpact SoftBody
+      value: BulletImpact
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -54,6 +66,18 @@ PrefabInstance:
     - target: {fileID: 400002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
       propertyPath: InitialModule.startSizeY.minMaxState
@@ -133,3 +157,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
+--- !u!1 &7183455942495797926 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7,
+    type: 3}
+  m_PrefabInstance: {fileID: 7183455942495699972}
+  m_PrefabAsset: {fileID: 0}

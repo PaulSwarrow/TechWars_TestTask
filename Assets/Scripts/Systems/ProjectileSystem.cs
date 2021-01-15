@@ -33,7 +33,8 @@ namespace DefaultNamespace.Systems
                 var projectile = projectiles[i];
 
                 var step = projectile.Direction * (GameManager.Properties.projectileVelocity * Time.deltaTime);
-                if (CheckHit(projectile, step) || Time.time - projectile.timestamp > GameManager.Properties.projectileLifetime)
+                if (CheckHit(projectile, step) ||
+                    Time.time - projectile.timestamp > GameManager.Properties.projectileLifetime)
                 {
                     GameManager.ObjectSpawner.Destroy(projectile);
                     projectiles.RemoveAt(i);
@@ -50,6 +51,7 @@ namespace DefaultNamespace.Systems
             if (GameManager.Colliders.Raycast(projectile.Position, movement, out var hit))
             {
                 var target = hit.collider.GetComponent<IDamagable>();
+                GameManager.VFX.BulletImpact(hit.point, movement);
                 target?.TakeDamage();
                 return true;
             }

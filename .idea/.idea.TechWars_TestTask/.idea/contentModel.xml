@@ -16,6 +16,7 @@
                 <e p="VirtualCollider.cs" t="Include" />
               </e>
             </e>
+            <e p="GameVFXActor.cs" t="Include" />
             <e p="ProjectileActor.cs" t="Include" />
           </e>
           <e p="Data" t="Include">
@@ -40,6 +41,7 @@
             <e p="PlayerController.cs" t="Include" />
             <e p="ProjectileSystem.cs" t="Include" />
             <e p="RespawnSystem.cs" t="Include" />
+            <e p="VfxSystem.cs" t="Include" />
           </e>
           <e p="Tools" t="Include">
             <e p="FollowCamera.cs" t="Include" />

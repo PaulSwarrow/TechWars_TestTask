@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public static CollidersSystem Colliders { get; private set; }
     public static NpcSystem NpcSystem { get; private set; }
     public static RespawnSystem RespawnSystem { get; private set; }
+    public static VfxSystem VFX { get; private set; }
 
     // Start is called before the first frame update
     void Awake()
@@ -33,6 +34,7 @@ public class GameManager : MonoBehaviour
         Colliders = InitSystem<CollidersSystem>();
         NpcSystem = InitSystem<NpcSystem>();
         RespawnSystem = InitSystem<RespawnSystem>();
+        VFX = InitSystem<VfxSystem>();
 
 
         systems.ForEach(system => system.Init());
