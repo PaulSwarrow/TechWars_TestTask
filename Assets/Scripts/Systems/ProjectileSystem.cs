@@ -20,7 +20,7 @@ namespace DefaultNamespace.Systems
 
         public void Spawn(Vector3 position, Vector3 direction)
         {
-            var projectile = GameManager.ObjectSpawner.Spawn(GameManager.GameProperties.projectilePrefab, position,
+            var projectile = GameManager.ObjectSpawner.Spawn(GameManager.Properties.projectilePrefab, position,
                 Quaternion.LookRotation(direction, Vector3.up));
             projectiles.Add(projectile);
         }
@@ -31,7 +31,7 @@ namespace DefaultNamespace.Systems
             {
                 var projectile = projectiles[i];
 
-                var step = projectile.Direction * (GameManager.GameProperties.projectileVelocity * Time.deltaTime);
+                var step = projectile.Direction * (GameManager.Properties.projectileVelocity * Time.deltaTime);
                 if (CheckHit(projectile, step))
                 {
                     GameManager.ObjectSpawner.Destroy(projectile);

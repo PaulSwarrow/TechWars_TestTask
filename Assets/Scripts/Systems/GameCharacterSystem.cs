@@ -12,7 +12,7 @@ namespace DefaultNamespace.Systems
 
         public void Init()
         {
-            prefab = GameManager.GameProperties.characterActorPrefab;
+            prefab = GameManager.Properties.characterActorPrefab;
         }
 
         public void Start()

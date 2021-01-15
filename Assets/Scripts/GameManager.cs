@@ -1,38 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using DefaultNamespace;
-using DefaultNamespace.Actors;
+using DefaultNamespace.Data;
 using DefaultNamespace.Systems;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 public class GameManager : MonoBehaviour
 {
-    [Serializable]
-    public class Properties
-    {
-        public GameCharacterActor characterActorPrefab;
-        public ProjectileActor projectilePrefab;
-        public float projectileVelocity;
-    }
-
-    [SerializeField] private Properties properties;
+    [SerializeField] private GameProperties properties;
     private List<IGameSystem> systems = new List<IGameSystem>();
 
     public static event Action UpdateEvent;
-    public static Properties GameProperties { get; private set; }
+    public static GameProperties Properties { get; private set; }
     public static PlayerController PlayerController { get; private set; }
     public static GameCharacterSystem GameCharacter { get; private set; }
 
     public static ObjectSpawner ObjectSpawner { get; private set; }
     public static ProjectileSystem Projectiles { get; private set; }
-    
+
     public static CollidersSystem Colliders { get; private set; }
 
     // Start is called before the first frame update
     void Awake()
     {
-        GameProperties = properties;
+        Properties = properties;
         PlayerController = InitSystem<PlayerController>();
         GameCharacter = InitSystem<GameCharacterSystem>();
         ObjectSpawner = InitSystem<ObjectSpawner>();
