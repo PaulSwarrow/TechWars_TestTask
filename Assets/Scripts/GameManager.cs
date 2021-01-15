@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public static event Action StartEvent;
     public static event Action UpdateEvent;
     public static event Action EndEvent;
+    public static bool GameStarted { get; private set; }
     public static GameProperties Properties { get; private set; }
     public static PlayerController PlayerController { get; private set; }
     public static GameCharacterSystem GameCharacter { get; private set; }
@@ -41,7 +42,10 @@ public class GameManager : MonoBehaviour
 
         systems.ForEach(system => system.Init());
         systems.ForEach(system => system.Start());
+        GameStarted = true;
         StartEvent?.Invoke();
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
 

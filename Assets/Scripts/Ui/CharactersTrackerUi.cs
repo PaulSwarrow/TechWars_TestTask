@@ -14,6 +14,7 @@ namespace DefaultNamespace.Ui
         private void Awake()
         {
             GameManager.StartEvent += OnGameStart;
+            if(GameManager.GameStarted) OnGameStart();
         }
 
         private void OnDestroy()

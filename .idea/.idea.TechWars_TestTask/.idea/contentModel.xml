@@ -49,6 +49,7 @@
             <e p="ListExtension.cs" t="Include" />
           </e>
           <e p="Ui" t="Include">
+            <e p="AimUi.cs" t="Include" />
             <e p="CharacterStatusUi.cs" t="Include" />
             <e p="CharactersTrackerUi.cs" t="Include" />
           </e>
