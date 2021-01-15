@@ -34,6 +34,7 @@ namespace DefaultNamespace
         public void Activate(GameCharacter character)
         {
             this.character = character;
+            ik.Character = character;
         }
 
         public void Reset()
@@ -43,21 +44,23 @@ namespace DefaultNamespace
 
         private void Update()
         {
-            gun.Fire = character.Fire;
-            gun.AimPoint = character.AimPoint;
             animator.SetBool(DeadKey, character.Dead);
             animator.SetLayerWeight(1, character.Dead ? 0 : 1);
             collider.enabled = !character.Dead;
+            agent.enabled = !character.Dead;
+            if (character.Dead)
+            {
+                gun.Fire = false;
+                return;
+            }
 
-            if (character.Dead) return;
-
+            gun.Fire = character.Fire;
+            gun.AimPoint = character.AimPoint;
             var movement = character.Move * agent.speed;
             var localMovement = transform.InverseTransformDirection(character.Move);
             //animate
             animator.SetFloat(ForwardKey, localMovement.z);
             animator.SetFloat(StrafeKey, localMovement.x);
-            ik.Aiming = character.Aiming;
-            ik.AimPoint = character.AimPoint;
 
             agent.Move(movement * Time.deltaTime);
             var direction = character.Direction;

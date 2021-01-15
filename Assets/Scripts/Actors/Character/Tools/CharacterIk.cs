@@ -1,13 +1,13 @@
 ﻿using System;
+using DefaultNamespace.Data;
 using UnityEngine;
 
 namespace DefaultNamespace.Tools
 {
     public class CharacterIk : MonoBehaviour
     {
-        [NonSerialized] public bool Aiming;
-        [NonSerialized] public Vector3 AimPoint;
-
+        public GameCharacter Character;
+        
         [SerializeField] private float correctionY;
         [SerializeField] private float correctionX;
         
@@ -23,8 +23,13 @@ namespace DefaultNamespace.Tools
 
         private void OnAnimatorIK(int layerIndex)
         {
-            if (!Aiming) return;
-            var delta = AimPoint - _transform.position;
+            if (Character.Dead)
+            {
+                _animator.SetLookAtWeight(0, 0);
+            }
+
+            if (!Character.Aiming) return;
+            var delta = Character.AimPoint - _transform.position;
             if (delta.magnitude < 1.5f) delta = delta.normalized * 1.5f;
             delta = _transform.InverseTransformDirection(delta);
             delta = Quaternion.Euler(0, correctionY, 0) * delta;
@@ -37,7 +42,7 @@ namespace DefaultNamespace.Tools
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(AimPoint, 1);
+            Gizmos.DrawWireSphere(Character.AimPoint, 1);
         }
     }
 }

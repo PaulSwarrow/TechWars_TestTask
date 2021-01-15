@@ -26,7 +26,8 @@ namespace DefaultNamespace.Systems
             {
                 npcs.Add(new NPC
                 {
-                    character = GameManager.GameCharacter.Spawn(GetRandomPosition(), GetRandomDirection())
+                    character = GameManager.GameCharacter.Spawn(GetRandomPosition(), GetRandomDirection()),
+                    targetPosition = GetRandomPosition()
                 });
             }
         }
@@ -35,16 +36,19 @@ namespace DefaultNamespace.Systems
         {
             foreach (var npc in npcs)
             {
+                var target = GameManager.PlayerController.Target;
                 var movementVector = npc.targetPosition - npc.character.Position;
-                var targetVector = GameManager.PlayerController.Target.Position - npc.character.Position;
+                var targetVector = target.Position - npc.character.Position;
                 var distance = targetVector.magnitude;
-                if (distance < 5)
+                if (!target.Dead && distance < 3)
                 {
                     npc.character.Direction = targetVector;
-                    // npc.character.Fire = npc.character.Aiming = true;
+                    npc.character.Fire = npc.character.Aiming = true;
+                    npc.character.AimPoint = target.Position + Vector3.up;
                 }
                 else
                 {
+                    npc.character.Fire = npc.character.Aiming = false;
                     npc.character.Direction = movementVector;
                 }
 
