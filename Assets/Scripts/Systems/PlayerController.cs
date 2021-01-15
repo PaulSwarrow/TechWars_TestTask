@@ -32,16 +32,16 @@ namespace DefaultNamespace.Systems
         private void OnUpdate()
         {
             character.Aiming = Input.GetButton("Fire2");
-            character.Fire = Input.GetButton("Fire1");
             var moveVector = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
             moveVector = Quaternion.Euler(0, camera.transform.rotation.eulerAngles.y, 0) * moveVector;
             character.Move = moveVector;
 
             if (character.Aiming)
             {
+                character.Fire = Input.GetButton("Fire1");
                 if (InputTools.MouseToFloorPoint(camera, 40, floorMask, out var point))
                 {
-                    point += Vector3.up;//do not shoot the floor)
+                    point += Vector3.up; //do not shoot the floor)
                     character.AimPoint = point;
                 }
 
@@ -51,6 +51,7 @@ namespace DefaultNamespace.Systems
             }
             else if (moveVector.magnitude > 0)
             {
+                character.Fire = false;
                 character.Direction = moveVector;
             }
         }
