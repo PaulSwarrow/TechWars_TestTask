@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 4317188007107449938}
   - component: {fileID: 3755797611126250306}
   - component: {fileID: 9014888302513083378}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GameCharacter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +163,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: b446f20c959e1b845a0dd07cbf304be3, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 0e7947590c70e0345ac931a2239181e6,
         type: 3}
       propertyPath: m_ApplyRootMotion
