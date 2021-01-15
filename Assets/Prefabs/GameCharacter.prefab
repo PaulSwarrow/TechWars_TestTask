@@ -65,6 +65,7 @@ MonoBehaviour:
   animator: {fileID: 624616822757355864}
   ik: {fileID: 6797258171504374957}
   gun: {fileID: 7577891889311988292}
+  collider: {fileID: 3161193556513416912}
 --- !u!195 &9014888302513083378
 NavMeshAgent:
   m_ObjectHideFlags: 0

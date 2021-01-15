@@ -25,6 +25,7 @@ namespace DefaultNamespace.Systems
         {
             foreach (var collider in colliders)
             {
+                if (!collider.enabled) continue;
                 if (collider.HitTest(origin, direction, out var point))
                 {
                     hit = new HitInfo

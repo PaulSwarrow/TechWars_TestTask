@@ -2,6 +2,7 @@
 using DefaultNamespace.Data;
 using DefaultNamespace.Interfaces;
 using DefaultNamespace.Tools;
+using Tools;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,11 +12,13 @@ namespace DefaultNamespace
     {
         private static readonly int ForwardKey = Animator.StringToHash("forward");
         private static readonly int StrafeKey = Animator.StringToHash("strafe");
+        private static readonly int DeadKey = Animator.StringToHash("dead");
 
         [SerializeField] private float directionAlignVelocity = 6;
         [SerializeField] private Animator animator;
         [SerializeField] private CharacterIk ik;
         [SerializeField] private CharacterGun gun;
+        [SerializeField] private VirtualCollider collider;
         private NavMeshAgent agent;
 
         public GameCharacter character { get; private set; }
@@ -40,6 +43,14 @@ namespace DefaultNamespace
 
         private void Update()
         {
+            gun.Fire = character.Fire;
+            gun.AimPoint = character.AimPoint;
+            animator.SetBool(DeadKey, character.Dead);
+            animator.SetLayerWeight(1, character.Dead ? 0 : 1);
+            collider.enabled = !character.Dead;
+
+            if (character.Dead) return;
+
             var movement = character.Move * agent.speed;
             var localMovement = transform.InverseTransformDirection(character.Move);
             //animate
@@ -49,18 +60,18 @@ namespace DefaultNamespace
             ik.AimPoint = character.AimPoint;
 
             agent.Move(movement * Time.deltaTime);
-            if (character.Direction.magnitude > 0)
+            var direction = character.Direction;
+            direction.y = 0;
+            if (direction.magnitude > 0)
             {
-                var angle = Vector3.SignedAngle(transform.forward, character.Direction, Vector3.up);
+                var angle = Vector3.SignedAngle(transform.forward, direction, Vector3.up);
                 transform.rotation *= Quaternion.Euler(0, directionAlignVelocity * angle * Time.deltaTime, 0);
             }
-
-            gun.Fire = character.Fire;
-            gun.AimPoint = character.AimPoint;
         }
 
         public void TakeDamage()
         {
+            character.TakeDamage();
         }
     }
 }

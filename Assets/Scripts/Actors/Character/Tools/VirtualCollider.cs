@@ -24,13 +24,13 @@ namespace Tools
             GameManager.Colliders.UnregisterCollider(this);
         }
 
-        public bool HitTest(Vector3 position, Vector3 direction, out Vector3 point)
+        public bool HitTest(Vector3 position, Vector3 vector, out Vector3 point)
         {
             if (bounds.IntersectRay(
-                new Ray(_transform.InverseTransformPoint(position), _transform.InverseTransformDirection(direction)),
-                out var distance))
+                new Ray(_transform.InverseTransformPoint(position), _transform.InverseTransformDirection(vector)),
+                out var distance) && distance < vector.magnitude)
             {
-                point = position + direction * distance;
+                point = position + vector * distance;
 
                 return true;
             }

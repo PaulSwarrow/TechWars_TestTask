@@ -21,11 +21,9 @@ namespace DefaultNamespace.Data
         public Vector3 AimPoint;
         public Vector3 Move;
         public Vector3 Direction;
+        public float Health;
+        public bool Dead;
 
-
-        public void ThrowCurrentItem()
-        {
-        }
 
         public void Destroy()
         {
@@ -38,6 +36,16 @@ namespace DefaultNamespace.Data
         {
             actor.transform.position = position;
             actor.transform.rotation = Quaternion.LookRotation(lookDirection, Vector3.up);
+        }
+
+        public void TakeDamage()
+        {
+            Health -= GameManager.Properties.damage;
+            if (Health <= 0)
+            {
+                Health = 0;
+                Dead = true;
+            }
         }
     }
 }

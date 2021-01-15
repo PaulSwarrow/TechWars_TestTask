@@ -35,6 +35,7 @@
           <e p="Systems" t="Include">
             <e p="CollidersSystem.cs" t="Include" />
             <e p="GameCharacterSystem.cs" t="Include" />
+            <e p="NpcSystem.cs" t="Include" />
             <e p="ObjectSpawner.cs" t="Include" />
             <e p="PlayerController.cs" t="Include" />
             <e p="ProjectileSystem.cs" t="Include" />

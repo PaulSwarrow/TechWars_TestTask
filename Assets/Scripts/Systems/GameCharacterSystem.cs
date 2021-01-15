@@ -27,6 +27,7 @@ namespace DefaultNamespace.Systems
         {
             var character = new GameCharacter(prefab);
             character.SetPosition(position, lookDirection);
+            character.Health = GameManager.Properties.characterHealth;
             character.DestroyEvent += OnCharacterDestroyed;
             list.Add(character);
             return character;

@@ -10,5 +10,8 @@ namespace DefaultNamespace.Data
         public ProjectileActor projectilePrefab;
         public float projectileVelocity;
         public float projectileLifetime = 1;
+        public float characterHealth = 100;
+        public float damage = 10;
+        public int NpcCount = 5;
     }
 }
