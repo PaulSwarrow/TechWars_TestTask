@@ -11,7 +11,6 @@ namespace DefaultNamespace.Systems
         {
             public Vector3 targetPosition;
             public GameCharacter character;
-            public GameCharacter targetEnemy;
         }
 
         private List<NPC> npcs = new List<NPC>();
@@ -27,7 +26,7 @@ namespace DefaultNamespace.Systems
             {
                 npcs.Add(new NPC
                 {
-                    character = GameManager.GameCharacter.Spawn(GetRandomPosition(Vector3.zero), GetRandomDirection())
+                    character = GameManager.GameCharacter.Spawn(GetRandomPosition(), GetRandomDirection())
                 });
             }
         }
@@ -41,19 +40,17 @@ namespace DefaultNamespace.Systems
                 var distance = targetVector.magnitude;
                 if (distance < 5)
                 {
-                    npc.targetEnemy = npc.character;
                     npc.character.Direction = targetVector;
                     // npc.character.Fire = npc.character.Aiming = true;
                 }
                 else
                 {
-                    npc.targetEnemy = null;
                     npc.character.Direction = movementVector;
                 }
 
                 if (Vector3.Distance(npc.targetPosition, npc.character.Position) < 1)
                 {
-                    npc.targetPosition = GetRandomPosition(npc.character.Position);
+                    npc.targetPosition = GetRandomPosition();
                 }
                 else
                 {
@@ -67,14 +64,15 @@ namespace DefaultNamespace.Systems
             return Quaternion.Euler(0, Random.Range(0, 360f), 0) * Vector3.forward;
         }
 
-        private Vector3 GetRandomPosition(Vector3 fromPosition)
+        private Vector3 GetRandomPosition()
         {
-            if (NavMesh.SamplePosition(fromPosition, out var hit, 10, NavMesh.AllAreas))
+            var offset = Quaternion.Euler(0, Random.Range(0, 360f), 0) * Vector3.forward * 8;
+            if (NavMesh.SamplePosition(offset, out var hit, 10, NavMesh.AllAreas))
             {
                 return hit.position;
             }
 
-            return fromPosition;
+            return Vector3.zero;
         }
 
         public void Destroy()
