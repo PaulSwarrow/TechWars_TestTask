@@ -21,7 +21,7 @@ namespace DefaultNamespace.Systems
         public void Spawn(Vector3 position, Vector3 direction)
         {
             var projectile = GameManager.ObjectSpawner.Spawn(GameManager.GameProperties.projectilePrefab, position,
-                Quaternion.LookRotation(direction));
+                Quaternion.LookRotation(direction, Vector3.up));
             projectiles.Add(projectile);
         }
 
@@ -29,7 +29,7 @@ namespace DefaultNamespace.Systems
         {
             for (var i = projectiles.Count - 1; i >= 0; i--)
             {
-                var projectile = projectiles[0];
+                var projectile = projectiles[i];
 
                 var step = projectile.Direction * (GameManager.GameProperties.projectileVelocity * Time.deltaTime);
                 if (CheckHit(projectile, step))
@@ -46,11 +46,10 @@ namespace DefaultNamespace.Systems
 
         private bool CheckHit(ProjectileActor projectile, Vector3 movement)
         {
-            if (GameManager.Colliders.Raycast(new Ray(projectile.Position, movement), out var hit))
+            if (GameManager.Colliders.Raycast(projectile.Position, movement, out var hit))
             {
                 var target = hit.collider.GetComponent<IDamagable>();
                 target?.TakeDamage();
-                //spawn hit effect
                 return true;
             }
 

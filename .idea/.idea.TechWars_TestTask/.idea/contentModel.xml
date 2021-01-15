@@ -11,6 +11,7 @@
             <e p="Character" t="Include">
               <e p="GameCharacterActor.cs" t="Include" />
               <e p="Tools" t="Include">
+                <e p="CharacterGun.cs" t="Include" />
                 <e p="CharacterIk.cs" t="Include" />
                 <e p="VirtualCollider.cs" t="Include" />
               </e>

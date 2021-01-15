@@ -1,12 +1,18 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Tools
 {
     public class VirtualCollider : MonoBehaviour
     {
+        [SerializeField] private Renderer mesh;
+        [SerializeField] private Bounds bounds;
+        private Transform _transform;
 
-        [SerializeField] private MeshRenderer mesh;
-
+        private void Awake()
+        {
+            _transform = transform;
+        }
 
         private void OnEnable()
         {
@@ -18,8 +24,24 @@ namespace Tools
             GameManager.Colliders.UnregisterCollider(this);
         }
 
-        public bool HitTest(Ray ray, out float distance) => mesh.bounds.IntersectRay(ray, out distance);
+        public bool HitTest(Vector3 position, Vector3 direction, out Vector3 point)
+        {
+            if (bounds.IntersectRay(
+                new Ray(_transform.InverseTransformPoint(position), _transform.InverseTransformDirection(direction)),
+                out var distance))
+            {
+                point = position + direction * distance;
 
+                return true;
+            }
 
+            point = default;
+            return false;
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.DrawWireCube(transform.TransformPoint(bounds.center), transform.TransformVector(bounds.size));
+        }
     }
 }

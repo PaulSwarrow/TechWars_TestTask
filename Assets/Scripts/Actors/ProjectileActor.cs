@@ -1,5 +1,4 @@
-﻿using System;
-using DefaultNamespace.Interfaces;
+﻿using DefaultNamespace.Interfaces;
 using UnityEngine;
 
 namespace DefaultNamespace.Actors

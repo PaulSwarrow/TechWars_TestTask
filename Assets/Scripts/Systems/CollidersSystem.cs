@@ -21,16 +21,16 @@ namespace DefaultNamespace.Systems
         {
         }
 
-        public bool Raycast(Ray ray, out HitInfo hit)
+        public bool Raycast(Vector3 origin, Vector3 direction, out HitInfo hit)
         {
             foreach (var collider in colliders)
             {
-                if (collider.HitTest(ray, out var distance))
+                if (collider.HitTest(origin, direction, out var point))
                 {
                     hit = new HitInfo
                     {
                         collider = collider,
-                        point = ray.origin + ray.direction.normalized * distance
+                        point = point
                     };
                     return true;
                 }

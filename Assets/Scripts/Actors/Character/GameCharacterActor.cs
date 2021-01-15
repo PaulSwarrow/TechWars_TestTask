@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Actors.Character.Tools;
 using DefaultNamespace.Data;
 using DefaultNamespace.Interfaces;
 using DefaultNamespace.Tools;
@@ -7,7 +7,7 @@ using UnityEngine.AI;
 
 namespace DefaultNamespace
 {
-    public class GameCharacterActor : MonoBehaviour, IPoolable
+    public class GameCharacterActor : MonoBehaviour, IPoolable, IDamagable
     {
         private static readonly int ForwardKey = Animator.StringToHash("forward");
         private static readonly int StrafeKey = Animator.StringToHash("strafe");
@@ -15,6 +15,7 @@ namespace DefaultNamespace
         [SerializeField] private float directionAlignVelocity = 6;
         [SerializeField] private Animator animator;
         [SerializeField] private CharacterIk ik;
+        [SerializeField] private CharacterGun gun;
         private NavMeshAgent agent;
 
         public GameCharacter character { get; private set; }
@@ -46,13 +47,20 @@ namespace DefaultNamespace
             animator.SetFloat(StrafeKey, localMovement.x);
             ik.Aiming = character.Aiming;
             ik.AimPoint = character.AimPoint;
-            
+
             agent.Move(movement * Time.deltaTime);
             if (character.Direction.magnitude > 0)
             {
                 var angle = Vector3.SignedAngle(transform.forward, character.Direction, Vector3.up);
                 transform.rotation *= Quaternion.Euler(0, directionAlignVelocity * angle * Time.deltaTime, 0);
             }
+
+            gun.Fire = character.Fire;
+            gun.AimPoint = character.AimPoint;
+        }
+
+        public void TakeDamage()
+        {
         }
     }
 }

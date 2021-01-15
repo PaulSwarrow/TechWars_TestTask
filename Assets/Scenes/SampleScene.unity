@@ -402,6 +402,9 @@ MonoBehaviour:
   properties:
     characterActorPrefab: {fileID: 3755797611126250306, guid: 01a038dff7f0659438ac814a33994058,
       type: 3}
+    projectilePrefab: {fileID: 114327156514205498, guid: 69cc7497a0c39594e82c44330da56186,
+      type: 3}
+    projectileVelocity: 100
 --- !u!4 &1779076117
 Transform:
   m_ObjectHideFlags: 0
