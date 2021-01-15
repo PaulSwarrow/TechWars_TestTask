@@ -25,6 +25,7 @@ namespace Actors.Character.Tools
             if (Character.Dead)
             {
                 _animator.SetLookAtWeight(0, 0);
+                return;
             }
 
             if (!Character.Aiming) return;

@@ -24,7 +24,7 @@ namespace Systems
         public void Start()
         {
             GameManager.UpdateEvent += OnUpdate;
-            for (var i = 0; i < GameManager.Properties.NpcCount; i++)
+            for (var i = 0; i < GameManager.Properties.npcCount; i++)
             {
                 npcs.Add(new NPC
                 {
@@ -49,7 +49,7 @@ namespace Systems
                 if (npc.pathProgress < npc.path.corners.Length)
                 {
                     var point = npc.path.corners[npc.pathProgress];
-                    if (Vector3.Distance(point, npc.character.Position) < 0.5f)
+                    if (Vector3.Distance(point, npc.character.Position) < GameManager.Properties.npcMovementAccurancy)
                     {
                         npc.pathProgress++;
                     }
@@ -68,7 +68,7 @@ namespace Systems
                 var target = GameManager.PlayerController.Target;
                 var targetVector = target.Position - npc.character.Position;
                 var distance = targetVector.magnitude;
-                if (!target.Dead && distance < 4)
+                if (!target.Dead && distance < GameManager.Properties.npcAttackDistance)
                 {
                     npc.character.Direction = targetVector;
                     npc.character.Fire = npc.character.Aiming = true;
@@ -89,8 +89,8 @@ namespace Systems
 
         private Vector3 GetRandomPosition()
         {
-            var offset = Quaternion.Euler(0, Random.Range(0, 360f), 0) * Vector3.forward * 8;
-            if (NavMesh.SamplePosition(offset, out var hit, 10, NavMesh.AllAreas))
+            var offset = Quaternion.Euler(0, Random.Range(0, 360f), 0) * Vector3.forward * GameManager.Properties.npcTravelDistance;
+            if (NavMesh.SamplePosition(offset, out var hit, GameManager.Properties.npcTravelDistance, NavMesh.AllAreas))
             {
                 return hit.position;
             }
