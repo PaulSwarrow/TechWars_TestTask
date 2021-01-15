@@ -56,7 +56,7 @@ namespace DefaultNamespace.Systems
                 return true;
             }
 
-            return false;
+            return Physics.Raycast(projectile.Position, movement, movement.magnitude);
         }
 
         public void Destroy()

@@ -11,6 +11,8 @@ namespace DefaultNamespace.Systems
         {
             public Vector3 targetPosition;
             public GameCharacter character;
+            public NavMeshPath path = new NavMeshPath();
+            public int pathProgress;
         }
 
         private List<NPC> npcs = new List<NPC>();
@@ -36,11 +38,37 @@ namespace DefaultNamespace.Systems
         {
             foreach (var npc in npcs)
             {
+                var movementVector = npc.character.Direction;
+                if (npc.pathProgress >= npc.path.corners.Length)
+                {
+                    npc.targetPosition = GetRandomPosition();
+                    NavMesh.CalculatePath(npc.character.Position, npc.targetPosition, NavMesh.AllAreas, npc.path);
+                    npc.pathProgress = 0;
+                }
+
+                if (npc.pathProgress < npc.path.corners.Length)
+                {
+                    var point = npc.path.corners[npc.pathProgress];
+                    if (Vector3.Distance(point, npc.character.Position) < 0.5f)
+                    {
+                        npc.pathProgress++;
+                    }
+                    else
+                    {
+                        movementVector = point - npc.character.Position;
+                        npc.character.Move = movementVector.normalized;
+                    }
+                }
+                else
+                {
+                    npc.character.Move = Vector3.zero;
+                }
+
+
                 var target = GameManager.PlayerController.Target;
-                var movementVector = npc.targetPosition - npc.character.Position;
                 var targetVector = target.Position - npc.character.Position;
                 var distance = targetVector.magnitude;
-                if (!target.Dead && distance < 3)
+                if (!target.Dead && distance < 4)
                 {
                     npc.character.Direction = targetVector;
                     npc.character.Fire = npc.character.Aiming = true;
@@ -50,15 +78,6 @@ namespace DefaultNamespace.Systems
                 {
                     npc.character.Fire = npc.character.Aiming = false;
                     npc.character.Direction = movementVector;
-                }
-
-                if (Vector3.Distance(npc.targetPosition, npc.character.Position) < 1)
-                {
-                    npc.targetPosition = GetRandomPosition();
-                }
-                else
-                {
-                    npc.character.Move = movementVector.normalized;
                 }
             }
         }
